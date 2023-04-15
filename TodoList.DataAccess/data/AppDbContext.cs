@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TodoList.DataAccess.Models;
 
 namespace TodoList.DataAccess.data
 {
@@ -23,8 +24,7 @@ namespace TodoList.DataAccess.data
         {
             if (!Dbcontextoptions.IsConfigured)
             {
-                Dbcontextoptions.UseSqlServer("Server=DESKTOP-S5CH96I;Database=TacheManagement;User Id=sa;Password=1234;Encrypt=False");
-                //Dbcontextoptions.UseSqlServer("Server=127.0.0.1;Database=UnivAssurance;Trusted_Connection=True;"); //Chaine de connexion
+                Dbcontextoptions.UseSqlServer("Server=DESKTOP-TABS97I;Database=TacheManagement;User Id=sa;Password=1234;Encrypt=False");
             }
         }
     }
