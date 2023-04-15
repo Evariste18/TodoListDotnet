@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoList.DataAccess
+namespace TodoList.DataAccess.Models
 {
     public class Tache
     {

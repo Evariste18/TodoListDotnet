@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoList.DataAccess;
+using TodoList.DataAccess.Models;
 
 namespace TodoList.BusinessLogic.Interfaces
 {
     public interface ITache
     {
-        public IEnumerable<Tache> GetRole();
-        //public IEnumerable<Tache> GetTacheById(int id);
-        //public Tache AddTache(Tache tache);
-        //public Tache UpdateTache(int id);
-        //public Boolean DeleteTache(int id);
+        IEnumerable<Tache> GetTache(int page, int pageSize);
+        Tache GetTacheById(int id);
+        Tache AddTache(Tache task);
+        Tache UpdateTache(Tache task);
+        Boolean DeleteTache(int id);
+        
     }
 }

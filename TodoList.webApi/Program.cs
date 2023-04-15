@@ -1,5 +1,9 @@
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using TodoList.DataAccess.data;
+using TodoList.BusinessLogic.Services;
+using TodoList.BusinessLogic.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,15 +16,20 @@ builder.Services.AddSwaggerGen(
                         c => {
                                 c.SwaggerDoc("v1", new OpenApiInfo()
                                 {
-                                    Title = "Gestion de Tâche",
+                                    Title = "Gestion de Tache",
                                     Version = "1.0.0",
-                                    Description = "Documentation d'une Application de Gestion de Tâche"
+                                    Description = "Documentation d'une Application de Gestion de Tache"
                                 });
                             //Ajout des fichiers Xml dans Swagger
                             string nomFichier = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                             string FichierXml = Path.Combine(AppContext.BaseDirectory, nomFichier);
                             c.IncludeXmlComments(FichierXml);
                         });
+
+builder.Services.AddScoped<ITache,TacheService>();
+builder.Services.AddDbContext<AppDbContext>(option =>{
+option.UseSqlServer(builder.Configuration.GetConnectionString("AbonnementCS"));
+});
 
 var app = builder.Build();
 
@@ -33,9 +42,9 @@ var app = builder.Build();
                 }
        );
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapControllers();
 
